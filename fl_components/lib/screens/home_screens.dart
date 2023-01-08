@@ -1,3 +1,5 @@
+import 'package:fl_components/models/models.dart';
+import 'package:fl_components/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen
@@ -9,6 +11,8 @@ class HomeScreen
   @override
   Widget
       build(BuildContext context) {
+
+    final menuOptions = AppRoutes.menuOption;
     return Scaffold(
         appBar: AppBar(
           title: const Text('Componentes Flutter'),
@@ -16,14 +20,14 @@ class HomeScreen
         ),
         body: ListView.separated(
           itemBuilder: (context, index) => ListTile(
-            leading: const Icon(Icons.access_time_filled_outlined),
-            title: const Text('Ruta'),
+            leading:  Icon( menuOptions[index].icon,color: Colors.indigo,),
+            title:  Text(menuOptions[index].name),
             onTap: () => {
-              Navigator.pushNamed(context, 'listview12')
+              Navigator.pushNamed(context, menuOptions[index].route)
             },
           ),
           separatorBuilder: (context, index) => const Divider(),
-          itemCount: 10,
+          itemCount: menuOptions.length,
         ));
   }
 }

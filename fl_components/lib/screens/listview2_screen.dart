@@ -20,7 +20,7 @@ class Listview2Screen
         appBar: AppBar(
           title: const Text('List View tipo 2'),
           elevation: 3,
-          backgroundColor: Colors.indigo,
+          backgroundColor: Colors.green,
         ),
         body: ListView.separated(
             itemBuilder: ((context, index) => ListTile(
