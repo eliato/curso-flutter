@@ -19,15 +19,13 @@ class Listview2Screen
     return Scaffold(
         appBar: AppBar(
           title: const Text('List View tipo 2'),
-          elevation: 3,
-          backgroundColor: Colors.green,
+          
         ),
         body: ListView.separated(
             itemBuilder: ((context, index) => ListTile(
                   title: Text(options[index]),
                   trailing: const Icon(
                     Icons.arrow_forward_ios_outlined,
-                    color: Colors.indigo,
                   ),
                   onTap: () {},
                 )),
