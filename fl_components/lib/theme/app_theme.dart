@@ -10,6 +10,9 @@ class AppTheme{
       color: primary,
       elevation: 2,
       ),
+      textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom( foregroundColor: primary)
+       )
   );
 
   static final ThemeData darkTheme =  ThemeData.dark().copyWith(
@@ -18,8 +21,13 @@ class AppTheme{
       color: primary,
       elevation: 2,
     ),
-    scaffoldBackgroundColor: Colors.black87
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom( foregroundColor: primary)
+    )
   );
+
+  //TextButton Theme
+ 
 
     
 }
