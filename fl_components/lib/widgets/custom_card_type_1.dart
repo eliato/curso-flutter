@@ -32,8 +32,7 @@ class CustomCardType1
                 TextButton(
                   onPressed: () {}, 
                   child: const Text('ok')
-                
-
+                             
                   )           
 
                 ],
