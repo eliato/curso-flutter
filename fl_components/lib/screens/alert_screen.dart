@@ -9,10 +9,23 @@ class AlertScreen
   @override
   Widget
       build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      
       body: Center(
-        child: Text('AlertScreen'),
+         child: ElevatedButton(
+          onPressed: () {}, 
+          child: const Padding(
+            padding: EdgeInsets.all(15),
+            child: Text('Show Alert', style: TextStyle(fontSize: 17)),
+          )),
       ),
+      floatingActionButton: FloatingActionButton(       
+        child: const Icon( Icons.close),
+        onPressed: () { 
+          Navigator.pop(context);
+         },
+        
+        ),
     );
   }
 }
