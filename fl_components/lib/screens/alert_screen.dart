@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertScreen
@@ -6,7 +7,37 @@ class AlertScreen
       {Key? key})
       : super(key: key);
 
-  void displayDialog(BuildContext context){
+  void displayDialogIos(BuildContext context){
+
+    showCupertinoDialog(
+      barrierDismissible: true,
+      context: context, 
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: const Text('Title'),
+          content:  Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Text('Alert Text'),
+                SizedBox( height: 10),
+                FlutterLogo( size: 100,)
+              ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () =>  Navigator.pop(context), 
+                  child: const Text('Cancel', style: TextStyle(color: Colors.red))
+                  ),
+                  TextButton(
+                  onPressed: () =>  Navigator.pop(context), 
+                  child: const Text('ok', style: TextStyle(color: Colors.green))
+                  ),
+              ],
+        );
+      } );
+  }
+
+  void displayDialogAndroid(BuildContext context){
 
       showDialog(
         barrierDismissible: false,
@@ -41,7 +72,8 @@ class AlertScreen
       
       body: Center(
          child: ElevatedButton(
-          onPressed: () => displayDialog(context), 
+          //onPressed: () => displayDialogAndroid(context), 
+          onPressed: () => displayDialogIos(context), 
           child: const Padding(
             padding: EdgeInsets.all(15),
             child: Text('Show Alert', style: TextStyle(fontSize: 17)),
