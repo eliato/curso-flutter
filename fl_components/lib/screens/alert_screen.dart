@@ -6,6 +6,34 @@ class AlertScreen
       {Key? key})
       : super(key: key);
 
+  void displayDialog(BuildContext context){
+
+      showDialog(
+        barrierDismissible: false,
+        context: context, 
+        builder: (BuildContext context) { 
+          return  AlertDialog(
+            elevation: 5,
+            title: const Text('Title'),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            content:  Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Text('Alert Text'),
+                SizedBox( height: 10),
+                FlutterLogo( size: 100,)
+              ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () =>  Navigator.pop(context), 
+                  child: const Text('Cancel'))
+              ],
+          );
+         }
+        );
+  }
+
   @override
   Widget
       build(BuildContext context) {
@@ -13,7 +41,7 @@ class AlertScreen
       
       body: Center(
          child: ElevatedButton(
-          onPressed: () {}, 
+          onPressed: () => displayDialog(context), 
           child: const Padding(
             padding: EdgeInsets.all(15),
             child: Text('Show Alert', style: TextStyle(fontSize: 17)),
