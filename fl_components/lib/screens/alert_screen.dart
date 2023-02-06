@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -58,7 +60,12 @@ class AlertScreen
               actions: [
                 TextButton(
                   onPressed: () =>  Navigator.pop(context), 
-                  child: const Text('Cancel'))
+                  child: const Text('Cancel')
+                  ),
+                  TextButton(
+                  onPressed: () =>  Navigator.pop(context), 
+                  child: const Text('ok')
+                  ),
               ],
           );
          }
@@ -73,7 +80,9 @@ class AlertScreen
       body: Center(
          child: ElevatedButton(
           //onPressed: () => displayDialogAndroid(context), 
-          onPressed: () => displayDialogIos(context), 
+          onPressed: () => Platform.isAndroid ? 
+                            displayDialogAndroid(context):
+                            displayDialogIos(context), 
           child: const Padding(
             padding: EdgeInsets.all(15),
             child: Text('Show Alert', style: TextStyle(fontSize: 17)),
