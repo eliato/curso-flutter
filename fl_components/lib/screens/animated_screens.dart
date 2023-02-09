@@ -44,7 +44,9 @@ void onChangeShape(){
         title: const Text('Animated Container'),
       ),
       body: Center(
-         child: Container(
+         child: AnimatedContainer(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeOutCubic,
           width: _width,
           height: _height,
           decoration: BoxDecoration(
@@ -54,8 +56,8 @@ void onChangeShape(){
          ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.play_circle_outline_outlined,size: 35),
-        onPressed: onChangeShape     
+        onPressed: onChangeShape,
+        child: const Icon(Icons.play_circle_outline_outlined,size: 35)     
         ) ,
     );
   }
