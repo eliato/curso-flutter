@@ -1,4 +1,5 @@
 import 'package:fl_components/models/models.dart';
+import 'package:fl_components/screens/inputs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/screens.dart';
@@ -14,6 +15,7 @@ MenuOption(route: 'alert', name: 'Alerts Screen', screend: const AlertScreen(), 
 MenuOption(route: 'card', name: 'Cards Screen', screend: const CardScreen(), icon: Icons.credit_card),
 MenuOption(route: 'avatar', name: 'Avatar Screen', screend: const AvatarScreen(), icon: Icons.supervised_user_circle_outlined),
 MenuOption(route: 'animated', name: 'Animated Screen', screend: const AnimatedScreen(), icon: Icons.play_circle_outline_rounded),
+MenuOption(route: 'inputs', name: 'Inputs Screen', screend: const InputsScreen(), icon: Icons.input_outlined),
 
 ];
 
