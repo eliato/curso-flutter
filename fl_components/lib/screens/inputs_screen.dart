@@ -7,6 +7,18 @@ class InputsScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
+    final GlobalKey<FormState> myFormkey = GlobalKey<FormState>();
+
+
+    final Map<String, String> formValues = {
+      'first_name': 'Elias',
+      'last_name' : 'torres',
+      'email'     : 'eliasto@gmail.com',
+      'password'  : '123456',
+      'role'      : 'Admin'  
+    };
+
     return  Scaffold(
       appBar: AppBar(
         title: const Text('Inputs and Form'),
@@ -14,17 +26,33 @@ class InputsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            children: const [
-               CustomInputField(labelText: 'Nombre',hintText: 'Nombre usuario'),
-               SizedBox(height: 30,),
-               CustomInputField(labelText: 'apellido',hintText: 'apellido usuario'),
-               SizedBox(height: 30,),
-               CustomInputField(labelText: 'email',hintText: 'email usuario', typeInput: TextInputType.emailAddress ),
-               SizedBox(height: 30,),
-               CustomInputField(labelText: 'password',hintText: 'password', obscureText: true, ),
-              
-            ],
+          child: Form(
+            key: myFormkey,
+            child: Column(
+              children:  [
+                 const CustomInputField(labelText: 'Nombre',hintText: 'Nombre usuario'),
+                 const SizedBox(height: 30,),
+                 const CustomInputField(labelText: 'apellido',hintText: 'apellido usuario'),
+                 const SizedBox(height: 30,),
+                 const CustomInputField(labelText: 'email',hintText: 'email usuario', typeInput: TextInputType.emailAddress ),
+                 const SizedBox(height: 30,),
+                 const CustomInputField(labelText: 'password',hintText: 'password', obscureText: true, ),
+                 const SizedBox(height: 30,),
+                
+                ElevatedButton(
+                  child: const SizedBox(
+                        width: double.infinity,
+                        child: Center( child: Text('Guardar'))),
+                  onPressed: () {
+                    FocusScope.of(context).requestFocus( FocusNode());
+                    if(!myFormkey.currentState!.validate()){
+                      print('formulario no valido');
+                      return;
+                    } 
+                  }, 
+                )
+              ],
+            ),
           )),)
     );
   }
