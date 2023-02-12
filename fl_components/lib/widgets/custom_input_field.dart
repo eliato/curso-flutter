@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 class CustomInputField extends StatelessWidget {
 
@@ -6,14 +7,17 @@ class CustomInputField extends StatelessWidget {
   final String? helperText;
   final IconData? icon;
   final IconData? suffixIcon;
-  
+  final TextInputType? typeInput;
+  final bool obscureText;
   const CustomInputField({
     Key? key, 
     this.hintText, 
     this.labelText, 
     this.helperText, 
     this.icon, 
-    this.suffixIcon,
+    this.suffixIcon, 
+    this.typeInput, 
+    this.obscureText = false,
   }) : super(key: key);
 
   @override
@@ -23,6 +27,8 @@ class CustomInputField extends StatelessWidget {
       autofocus: false,
       initialValue: '',
       textCapitalization: TextCapitalization.words,
+      keyboardType: typeInput,
+      obscureText: obscureText,
       onChanged: (value) {
         print( 'value: $value');
       },
@@ -35,7 +41,7 @@ class CustomInputField extends StatelessWidget {
         hintText: hintText,
         labelText: labelText,
         helperText: helperText,
-        counterText: '3 caracteres',
+       // counterText: '3 caracteres',
         suffixIcon: suffixIcon == null? null: Icon( suffixIcon ),
        // prefixIcon: Icon(Icons.verified_user_rounded)
        icon: icon == null? null:  Icon( icon ),
