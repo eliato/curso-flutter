@@ -1,5 +1,6 @@
 import 'package:fl_components/models/models.dart';
 import 'package:fl_components/screens/inputs_screen.dart';
+import 'package:fl_components/screens/slider_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/screens.dart';
@@ -16,6 +17,7 @@ MenuOption(route: 'card', name: 'Cards Screen', screend: const CardScreen(), ico
 MenuOption(route: 'avatar', name: 'Avatar Screen', screend: const AvatarScreen(), icon: Icons.supervised_user_circle_outlined),
 MenuOption(route: 'animated', name: 'Animated Screen', screend: const AnimatedScreen(), icon: Icons.play_circle_outline_rounded),
 MenuOption(route: 'inputs', name: 'Inputs Screen', screend: const InputsScreen(), icon: Icons.input_outlined),
+MenuOption(route: 'slider', name: 'Slider and Check', screend: const SliderScreen(), icon: Icons.photo_size_select_actual_rounded),
 
 ];
 
