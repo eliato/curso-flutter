@@ -40,6 +40,14 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     isLoading = false;
 
     setState(() {});
+
+    if(scrollController.position.pixels + 100 <= scrollController.position.maxScrollExtent) return;
+
+    scrollController.animateTo(
+      scrollController.position.pixels + 120, 
+      duration: const Duration(microseconds: 300), 
+      curve: Curves.fastOutSlowIn
+      );
   }
 
   void add5(){
@@ -52,27 +60,62 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
+    final size = MediaQuery.of(context).size;
+
     return  Scaffold(
       backgroundColor: Colors.black, //color de fondo cuando se baja o se sube la imagen
       body: MediaQuery.removePadding(
         context: context,
         removeTop: true,
         removeBottom: true,
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          controller: scrollController,
-          itemCount: imagesIds.length,
-          itemBuilder: (BuildContext context, int index) {
-            return FadeInImage(
-              width: double.infinity,
-              height: 300,
-              fit: BoxFit.cover,
-              placeholder: const AssetImage('assets/jar-loading.gif'), 
-              image: NetworkImage('https://picsum.photos/500/300?image=${ imagesIds[index] }')
-              );
-          },
+        child: Stack(
+          children: [
+            ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              controller: scrollController,
+              itemCount: imagesIds.length,
+              itemBuilder: (BuildContext context, int index) {
+                return FadeInImage(
+                  width: double.infinity,
+                  height: 300,
+                  fit: BoxFit.cover,
+                  placeholder: const AssetImage('assets/jar-loading.gif'), 
+                  image: NetworkImage('https://picsum.photos/500/300?image=${ imagesIds[index] }')
+                  );
+              },
+            ),
+            
+            if(isLoading)
+            Positioned(
+              bottom: 40,
+              left: size.width * 0.5 - 30,
+              child: const _LoadingIcon()
+              )
+          ],
         ),
       ),
+    );
+  }
+}
+
+class _LoadingIcon extends StatelessWidget {
+  const _LoadingIcon({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      
+      width: 60,
+      height: 60,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.9),
+        shape: BoxShape.circle
+        ),
+      child: const CircularProgressIndicator(),
     );
   }
 }
