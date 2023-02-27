@@ -12,6 +12,7 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
 
   final List<int> imagesIds = [1,2,3,4,5,6,7,8,9,10];
   final ScrollController scrollController = ScrollController();
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -20,9 +21,25 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
 
     scrollController.addListener(() {
       if ((scrollController.position.pixels + 500) >= scrollController.position.maxScrollExtent) {
-        add5();
+        //add5();
+        fechData();
       }
     });
+  }
+
+  Future fechData() async{
+    
+    if (isLoading) return;
+
+    isLoading = true;
+    setState(() { });
+
+    await Future.delayed(const Duration(seconds: 3));
+    add5();
+
+    isLoading = false;
+
+    setState(() {});
   }
 
   void add5(){
@@ -30,9 +47,7 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     imagesIds.addAll(
       [1,2,3,4,5].map((e) => lastId + e)
     );
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   @override
