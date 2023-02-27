@@ -7,6 +7,7 @@ class ListViewBuilderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: Colors.black, //color de fondo cuando se baja o se sube la imagen
       body: MediaQuery.removePadding(
         context: context,
         removeTop: true,
