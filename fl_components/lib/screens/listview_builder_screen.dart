@@ -1,3 +1,4 @@
+import 'package:fl_components/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ListViewBuilderScreen extends StatefulWidget {
@@ -58,6 +59,15 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     setState(() {});
   }
 
+  Future<void> onRefresh() async{
+    await Future.delayed(const Duration(seconds: 2));
+    final lastId = imagesIds.last;
+    imagesIds.clear();
+    imagesIds.add(lastId + 1);
+    add5();
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     
@@ -71,19 +81,23 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
         removeBottom: true,
         child: Stack(
           children: [
-            ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              controller: scrollController,
-              itemCount: imagesIds.length,
-              itemBuilder: (BuildContext context, int index) {
-                return FadeInImage(
-                  width: double.infinity,
-                  height: 300,
-                  fit: BoxFit.cover,
-                  placeholder: const AssetImage('assets/jar-loading.gif'), 
-                  image: NetworkImage('https://picsum.photos/500/300?image=${ imagesIds[index] }')
-                  );
-              },
+            RefreshIndicator(
+              color: AppTheme.primary,
+              onRefresh: onRefresh,
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                controller: scrollController,
+                itemCount: imagesIds.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return FadeInImage(
+                    width: double.infinity,
+                    height: 300,
+                    fit: BoxFit.cover,
+                    placeholder: const AssetImage('assets/jar-loading.gif'), 
+                    image: NetworkImage('https://picsum.photos/500/300?image=${ imagesIds[index] }')
+                    );
+                },
+              ),
             ),
             
             if(isLoading)
