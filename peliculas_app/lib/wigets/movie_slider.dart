@@ -7,7 +7,7 @@ class MovieSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 260,
       child: Column(
@@ -59,7 +59,12 @@ class _MoviePoster extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            const Text('Startwars', maxLines: 2, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,)
+            const Text(
+              'Startwars', 
+              maxLines: 2, 
+              overflow: TextOverflow.ellipsis, 
+              textAlign: TextAlign.center,
+              )
         ],
       ),
     );
