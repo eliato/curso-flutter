@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -12,7 +14,7 @@ class DetailsScreen extends StatelessWidget {
 
     return const Scaffold(
      body: CustomScrollView(
-      slivers: <Widget>[
+      slivers: [
         _CustomAppBar()
       ],
      )
@@ -25,19 +27,32 @@ class _CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverAppBar(
-      automaticallyImplyLeading: true,
-      pinned: false,
-      snap: false,
-      expandedHeight: 160.0,
-      collapsedHeight: 80.0,
+    return  SliverAppBar(
+      //automaticallyImplyLeading: true,
+      pinned: true,
+      floating: false,
+      expandedHeight: 200.0,
+      //collapsedHeight: 80.0,
       flexibleSpace:  FlexibleSpaceBar(
-    title: Text('SliverAppBar'),
-    background: FlutterLogo(),
+      centerTitle: true,
+      titlePadding: const EdgeInsets.all(0),
+      title: Container(
+        width: double.infinity,
+        alignment: Alignment.bottomCenter,
+        color: Colors.black12,
+        child: const Text('SliverAppBar', style: TextStyle(fontSize: 16)),
+      ),
+      background: const FadeInImage(
+        placeholder: AssetImage('assets/loading.gif'),
+        image: NetworkImage('https://via.placeholder.com/500x300'),
+        fit: BoxFit.cover,
+      ),
   ),
-  leading: BackButton(
-    color: Colors.white,
-  ),
+      leading: const  BackButton(
+        color: Colors.white,
+      
+      ),
+
     );
   }
 }
