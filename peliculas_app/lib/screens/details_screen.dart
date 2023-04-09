@@ -35,7 +35,10 @@ class DetailsScreen extends StatelessWidget {
       slivers: <Widget>[
         const _CustomAppBar(),
         SliverList(delegate: SliverChildListDelegate([
-          const _PosterAndTitle()
+          const _PosterAndTitle(),
+          _Overview(),
+          _Overview(),
+          _Overview()
         ]
           
         ),)
@@ -81,6 +84,7 @@ class _CustomAppBar extends StatelessWidget {
 }
 
 class _PosterAndTitle extends StatelessWidget {
+
   const _PosterAndTitle();
   
   @override
@@ -117,6 +121,20 @@ class _PosterAndTitle extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class _Overview extends StatelessWidget {
+ 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child:  Text('Commodo dolore aliqua aliquip culpa do reprehenderit Lorem officia voluptate veniam. Culpa ad elit reprehenderit cupidatat aute adipisicing exercitation excepteur eu exercitation enim. Proident anim magna sunt aute culpa nulla pariatur culpa amet mollit non. Nulla cupidatat est ipsum voluptate dolor velit eu qui irure velit in qui mollit. Do minim non exercitation exercitation veniam officia aute do magna. Reprehenderit enim aute consequat veniam commodo anim laborum.',
+              textAlign: TextAlign.justify,
+              style: Theme.of(context).textTheme.subtitle1,)
+      
     );
   }
 }
